@@ -113,9 +113,14 @@ class KafkaPipeline:
             return
 
         try:  # pragma: no cover - network interaction
+            payload = (
+                reading.model_dump()
+                if hasattr(reading, "model_dump")
+                else reading.dict()
+            )
             self._producer.send(
                 self._settings.kafka_topic,
-                json.dumps(reading.dict()).encode("utf-8"),
+                json.dumps(payload).encode("utf-8"),
             )
         except Exception as exc:
             logger.error("Failed to publish reading to Kafka: %s", exc)
