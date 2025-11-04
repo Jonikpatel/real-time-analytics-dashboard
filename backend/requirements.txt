@@ -1,8 +1,8 @@
 fastapi==0.104.1
 uvicorn==0.24.0
 kafka-python==2.0.2
-pandas==1.5.3  # Downgraded for compatibility
-scikit-learn==1.2.2  # Adjusted for Python 3.8
 sqlalchemy==2.0.23
 psycopg2-binary==2.9.9
 python-dotenv==1.0.0
+pytest==7.4.3
+pandas==2.1.4
